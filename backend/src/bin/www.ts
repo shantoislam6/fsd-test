@@ -11,6 +11,7 @@ import '@/configs/env';
  */
 import http from 'node:http';
 import app from '@/app';
+// import mongoose from 'mongoose';
 
 const port = process.env.PORT || 3000;
 
@@ -24,14 +25,15 @@ const server = http.createServer(app);
 server.on('error', (err) => {
   throw new Error(err.message);
 });
+
 console.log(`Mode ${process.env.NODE_ENV}`);
-// dbAuthenticate()
-//   .then((time) => {
-//     console.log('Postgres connected successfully at '+ time);
-//     // Start the server
+
+// mongoose
+//   .connect(String(process.env.MONGODB_CONNECTION))
+//   .then(() => {
+//     console.log('Connect to mongodb');
 //     server.listen(port);
 //     server.on('listening', () => {
-
 //       console.log(`Server is listening on port ${port}`);
 //     });
 //   })

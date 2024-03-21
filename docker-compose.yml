@@ -1,0 +1,47 @@
+version: '3.8'
+services:
+  app:
+    depends_on:
+      - server
+    build:
+      context: ./frontend
+    ports:
+      - 8080:8080
+    develop:
+      watch:
+        - path: ./frontend/package.json
+          action: rebuild
+        - path: ./frontend/yarn.lock
+          action: rebuild
+        - path: ./frontend
+          target: /app
+          action: sync
+  server:
+    depends_on:
+      - mongo
+    build:
+      context: ./backend
+    ports:
+      - 3000:3000
+    develop:
+      watch:
+        - path: ./backend/package.json
+          action: rebuild
+        - path: ./backend/yarn.lock
+          action: rebuild
+        - path: ./backend
+          target: /app
+          action: sync 
+  mongo:
+    image: mongo:7.0
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=mongoadmin
+      - MONGO_INITDB_ROOT_PASSWORD=password
+    ports:
+      - 27017:27017
+    volumes:
+      - mongodata:/data/db
+volumes:
+  mongodata:
+    driver: local
+    

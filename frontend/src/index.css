@@ -1,0 +1,49 @@
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+img {
+  max-width: 100%;
+}
+
+:root {
+  --text-color: #c2c2c2;
+  --primary-color: #5f4bab;
+  --background-color: #0a0c14;
+  --button-color: #666;
+  --button-hover-color: #ccc;
+  --background-card: #040816;
+  --border-color: #271a44;
+}
+
+/* Dark theme modifications */
+body.light-theme {
+  --text-color: #1f1f1f;
+  --primary-color: #5d56c7;
+  --background-color: #ffffff;
+  --button-color: #7c7c7c;
+  --button-hover-color: #666;
+  --background-card: #f5f6ff;
+  --border-color: #ddd;
+}
+
+body {
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+a {
+  color: var(--text-color);
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+main {
+  margin-top: 3rem;
+}

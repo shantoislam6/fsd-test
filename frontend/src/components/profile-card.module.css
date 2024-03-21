@@ -1,0 +1,49 @@
+/* profile-card.module.css */
+
+.userProfileCard {
+  min-height: 365px;
+  border: 1px solid var(--border-color);
+  border-radius: 0.5rem;
+  padding: 30px 20px;
+  text-align: center;
+  font-family: Arial, sans-serif;
+  background-color: var(--background-card);
+}
+
+.userProfileCard img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  margin-bottom: 15px;
+}
+
+.userProfileCard .name{
+  margin-bottom: 0.7rem;
+}
+.userProfileCard .name a{
+  color: var(--primary-color);
+}
+.userProfileCard .bio {
+  margin-bottom: 20px;
+  color: var(--text-color);
+}
+
+.userProfileCard .email {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+}
+
+.userProfileCard .email .toggleButton {
+  background-color: transparent;
+  color: var(--button-color);
+  border: none;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.userProfileCard .toggleButton:hover {
+  color: var(--button-hover-color);
+} 
+

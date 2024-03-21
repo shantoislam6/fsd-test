@@ -1,7 +1,17 @@
+import './app.css';
+
+import ProfileCards from './components/ProfileCards';
+import ThemeToggle from './components/ThemeToggle';
+
 function App() {
   return (
-      <h1>Hello Apps</h1>
-  )
+    <>
+      <ThemeToggle />
+      <main>
+        <ProfileCards />
+      </main>
+    </>
+  );
 }
 
-export default App
+export default App;

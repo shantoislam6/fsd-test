@@ -1,0 +1,43 @@
+/* Toggle switch styles */
+.toggleSwitch {
+  position: absolute;
+  top: 30px;
+  right: 30px;
+}
+
+.toggleSwitch input[type='checkbox'] {
+  display: none;
+}
+
+.toggleSwitch label {
+  cursor: pointer;
+  display: inline-block;
+  width: 60px;
+  height: 35px;
+  position: relative;
+  background-color: var(--primary-color);
+
+  border-radius: 17px;
+  transition: background-color 0.3s;
+}
+
+.toggleSwitch label::before {
+  content: '';
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: white;
+  top: 3px;
+  left: 3px;
+  transition: left 0.3s;
+}
+
+.toggleSwitch input:checked + label {
+  background-color: #ccc;
+
+}
+
+.toggleSwitch input:checked + label::before {
+  left: 28px;
+}

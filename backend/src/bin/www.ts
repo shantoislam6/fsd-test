@@ -11,7 +11,7 @@ import '@/configs/env';
  */
 import http from 'node:http';
 import app from '@/app';
-// import mongoose from 'mongoose';
+import mongoose from 'mongoose';
 
 const port = process.env.PORT || 3000;
 
@@ -28,18 +28,13 @@ server.on('error', (err) => {
 
 console.log(`Mode ${process.env.NODE_ENV}`);
 
-// mongoose
-//   .connect(String(process.env.MONGODB_CONNECTION))
-//   .then(() => {
-//     console.log('Connect to mongodb');
-//     server.listen(port);
-//     server.on('listening', () => {
-//       console.log(`Server is listening on port ${port}`);
-//     });
-//   })
-//   .catch((err) => console.log(err));
-
-server.listen(port);
-server.on('listening', () => {
-  console.log(`Server is listening on port ${port}`);
-});
+mongoose
+  .connect(String(process.env.MONGODB_CONNECTION))
+  .then(() => {
+    console.log('Connected to mongodb');
+    server.listen(port);
+    server.on('listening', () => {
+      console.log(`Server is listening on port ${port}`);
+    });
+  })
+  .catch((err) => console.log(err));

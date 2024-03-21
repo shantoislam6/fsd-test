@@ -1,21 +1,15 @@
 version: '3.8'
 services:
+
   app:
+    container_name: fsd_app
     depends_on:
       - server
     build:
       context: ./frontend
     ports:
       - 8080:8080
-    develop:
-      watch:
-        - path: ./frontend/package.json
-          action: rebuild
-        - path: ./frontend/yarn.lock
-          action: rebuild
-        - path: ./frontend
-          target: /app
-          action: sync
+
   server:
     depends_on:
       - mongo
@@ -23,25 +17,21 @@ services:
       context: ./backend
     ports:
       - 3000:3000
-    develop:
-      watch:
-        - path: ./backend/package.json
-          action: rebuild
-        - path: ./backend/yarn.lock
-          action: rebuild
-        - path: ./backend
-          target: /app
-          action: sync 
+    environment:
+      - PORT=3000
+      - MONGODB_CONNECTION=mongodb://mongoadmin:password@fsd_mongodb:27017
+   
   mongo:
-    image: mongo:7.0
+    container_name: fsd_mongodb
+    image: mongo:latest
+    restart: always
     environment:
       - MONGO_INITDB_ROOT_USERNAME=mongoadmin
       - MONGO_INITDB_ROOT_PASSWORD=password
     ports:
       - 27017:27017
     volumes:
-      - mongodata:/data/db
+      - mongo_db:/data/db
+
 volumes:
-  mongodata:
-    driver: local
-    
+  mongo_db:

@@ -1,8 +1,9 @@
 import PropType from 'prop-types';
 import { useState, useMemo } from 'react';
-import profileCardStyles from './profile-card.module.css';
+import userProfileStyles from './user-profile.module.css';
+import { Link } from 'react-router-dom';
 
-function ProfileCard({ name, bio, email, imageSrc }) {
+function UserProfile({ id, name, bio, email, imageSrc }) {
   const [showEmail, setShowEmail] = useState(false);
 
   const transformedEmail = useMemo(() => {
@@ -18,24 +19,24 @@ function ProfileCard({ name, bio, email, imageSrc }) {
   };
 
   return (
-    <div className={profileCardStyles.userProfileCard}>
+    <div className={userProfileStyles.userProfileCard}>
       <img
         src={imageSrc}
         alt={name}
       />
-      <h2 className={profileCardStyles.name}>
-        <a href="#">{name}</a>
+      <h2 className={userProfileStyles.name}>
+        <Link to={`/users/${id}`}>{name}</Link>
       </h2>
-      <p className={profileCardStyles.bio}>{bio}</p>
-      <div className={profileCardStyles.email}>
+      <p className={userProfileStyles.bio}>{bio}</p>
+      <div className={userProfileStyles.email}>
         <a
           href={showEmail ? `mailto:${transformedEmail}` : '#'}
-          className={profileCardStyles.emailAddress}
+          className={userProfileStyles.emailAddress}
         >
           {transformedEmail}
         </a>
         <button
-          className={profileCardStyles.toggleButton}
+          className={userProfileStyles.toggleButton}
           onClick={toggleEmailVisibility}
           aria-label={showEmail ? 'Hide email' : 'Show email'}
         >
@@ -50,11 +51,12 @@ function ProfileCard({ name, bio, email, imageSrc }) {
   );
 }
 
-ProfileCard.propTypes = {
+UserProfile.propTypes = {
+  id: PropType.number.isRequired,
   name: PropType.string.isRequired,
   bio: PropType.string.isRequired,
   email: PropType.string.isRequired,
   imageSrc: PropType.string.isRequired,
 };
 
-export default ProfileCard;
+export default UserProfile;

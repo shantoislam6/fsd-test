@@ -11,16 +11,18 @@ export default function Users() {
       </div>
       <div className="user-group">
         {!loading
-          ? users.map((user) => (
-              <UserProfile
-                key={user.id}
-                id={user.id}
-                name={user.name}
-                bio={user.bio}
-                email={user.email}
-                imageSrc={user.imageSrc}
-              />
-            ))
+          ? users.length > 0
+            ? users.map((user) => (
+                <UserProfile
+                  key={user.id}
+                  id={user.id}
+                  name={user.name}
+                  bio={user.bio}
+                  email={user.email}
+                  imageSrc={user.imageSrc}
+                />
+              ))
+            : 'No Result'
           : 'Loading...'}
       </div>
     </div>

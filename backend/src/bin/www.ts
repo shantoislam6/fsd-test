@@ -31,10 +31,10 @@ console.log(`Mode ${process.env.NODE_ENV}`);
 mongoose
   .connect(String(process.env.MONGODB_CONNECTION))
   .then(() => {
-    console.log('Connected to mongodb');
+    console.log('Connected to mongodb database successfully yeee');
     server.listen(port);
     server.on('listening', () => {
       console.log(`Server is listening on port ${port}`);
     });
   })
-  .catch((err) => console.log(err));
+  .catch((err) => console.log('this is db conn error', err));

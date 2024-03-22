@@ -1,28 +1,23 @@
 version: '3.8'
 services:
 
-  app:
-    container_name: fsd_app
+  api:
+    container_name: api
     depends_on:
-      - server
+      - db
     build:
-      context: ./frontend
-    ports:
-      - 8080:8080
-
-  server:
-    depends_on:
-      - mongo
-    build:
-      context: ./backend
+      context: .
     ports:
       - 3000:3000
+    volumes:
+      - ./:/app 
+      - /app/node_modules
     environment:
       - PORT=3000
-      - MONGODB_CONNECTION=mongodb://mongoadmin:password@fsd_mongodb:27017
+      - MONGODB_CONNECTION=mongodb://mongoadmin:password@db:27017
    
-  mongo:
-    container_name: fsd_mongodb
+  db:
+    container_name: db
     image: mongo:latest
     restart: always
     environment:

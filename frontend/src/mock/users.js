@@ -49,6 +49,20 @@ export const users = [
   },
 ];
 
-export const findUser = (id) => {
+const delay = (duration) => {
+  return new Promise((resolve) => {
+    window.setTimeout(() => {
+      resolve(duration);
+    }, duration);
+  });
+};
+
+export const getUsers = async () => {
+  await delay(1000);
+  return users;
+};
+
+export const findUser = async (id) => {
+  await delay(1000);
   return users.filter((user) => user.id == id)[0];
 };

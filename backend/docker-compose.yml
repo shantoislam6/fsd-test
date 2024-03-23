@@ -1,21 +1,23 @@
 version: '3.8'
 services:
+  # api:
+  #   container_name: api
+  #   depends_on:
+  #     - db
+  #     # - cache
+  #   build:
+  #     context: .
+  #   ports:
+  #     - 3000:3000
+  #   volumes:
+  #     - ./:/app
+  #     - /app/node_modules
+  #   environment:
+  #     - PORT=3000
+  #     - MONGODB_CONNECTION=mongodb://mongoadmin:password@db:27017
+  #     - REDIS_URI=redis://default:password@cache:6379
+  #     - DB_NAME=fsd
 
-  api:
-    container_name: api
-    depends_on:
-      - db
-    build:
-      context: .
-    ports:
-      - 3000:3000
-    volumes:
-      - ./:/app 
-      - /app/node_modules
-    environment:
-      - PORT=3000
-      - MONGODB_CONNECTION=mongodb://mongoadmin:password@db:27017
-   
   db:
     container_name: db
     image: mongo:latest
@@ -26,7 +28,19 @@ services:
     ports:
       - 27017:27017
     volumes:
-      - mongo_db:/data/db
+      - mongo_volume_data:/data/db
+
+  cache:
+    container_name: cache
+    image: redis
+    command: /bin/sh -c "redis-server --requirepass password"
+    environment:
+      - REDIS_URI=redis://default:password@cache:6379
+    volumes:
+      - redis_volume_data:/data/cache
+    ports:
+      - 6379:6379
 
 volumes:
-  mongo_db:
+  mongo_volume_data:
+  redis_volume_data:

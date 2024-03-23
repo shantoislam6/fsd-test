@@ -1,3 +1,5 @@
+import { delay } from '@/lib/utils';
+
 export const users = [
   {
     id: 1,
@@ -48,14 +50,6 @@ export const users = [
       'https://img.freepik.com/premium-photo/artist-digital-avatar-generative-ai_934475-9063.jpg?w=1060',
   },
 ];
-
-const delay = (duration) => {
-  return new Promise((resolve) => {
-    window.setTimeout(() => {
-      resolve(duration);
-    }, duration);
-  });
-};
 
 export const getUsers = async () => {
   await delay(1000);

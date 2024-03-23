@@ -14,8 +14,8 @@ export default function Users() {
           ? users.length > 0
             ? users.map((user) => (
                 <UserProfile
-                  key={user.id}
-                  id={user.id}
+                  key={user._id}
+                  id={user._id}
                   name={user.name}
                   bio={user.bio}
                   email={user.email}

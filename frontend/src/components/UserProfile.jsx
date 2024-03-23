@@ -52,7 +52,7 @@ function UserProfile({ id, name, bio, email, imageSrc }) {
 }
 
 UserProfile.propTypes = {
-  id: PropType.number.isRequired,
+  id: PropType.string.isRequired,
   name: PropType.string.isRequired,
   bio: PropType.string.isRequired,
   email: PropType.string.isRequired,

@@ -1,14 +1,8 @@
 import { Router } from 'express';
+import userRouter from './user.route';
+
 const router = Router();
 
-router.all('/', (req, res) => {
-  return res.json({
-    success: true,
-    sabbir: true,
-    shanto: true,
-  });
-});
-
-// router.use('/docs',swaggerUi.serve);
+router.use('/api/users', userRouter);
 
 export default router;

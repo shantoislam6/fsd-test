@@ -29,8 +29,11 @@ server.on('error', (err) => {
 console.log(`Mode ${process.env.NODE_ENV}`);
 
 mongoose
-  .connect(String(process.env.MONGODB_CONNECTION))
+  .connect(String(process.env.MONGODB_CONNECTION), {
+    dbName: process.env.DB_NAME,
+  })
   .then(() => {
+    // set alias
     console.log('Connected to mongodb database successfully yeee');
     server.listen(port);
     server.on('listening', () => {

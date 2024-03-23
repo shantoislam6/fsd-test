@@ -1,22 +1,22 @@
 version: '3.8'
 services:
-  # api:
-  #   container_name: api
-  #   depends_on:
-  #     - db
-  #     # - cache
-  #   build:
-  #     context: .
-  #   ports:
-  #     - 3000:3000
-  #   volumes:
-  #     - ./:/app
-  #     - /app/node_modules
-  #   environment:
-  #     - PORT=3000
-  #     - MONGODB_CONNECTION=mongodb://mongoadmin:password@db:27017
-  #     - REDIS_URI=redis://default:password@cache:6379
-  #     - DB_NAME=fsd
+  api:
+    container_name: api
+    depends_on:
+      - db
+      - cache
+    build:
+      context: .
+    ports:
+      - 3000:3000
+    volumes:
+      - ./:/app
+      - /app/node_modules
+    environment:
+      - PORT=3000
+      - MONGODB_CONNECTION=mongodb://mongoadmin:password@db:27017
+      - REDIS_URI=redis://default:password@cache:6379
+      - DB_NAME=fsd
 
   db:
     container_name: db

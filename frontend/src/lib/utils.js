@@ -10,6 +10,6 @@ export function delay(miliseconds) {
 
 export const apiFetch = axios.create({
   baseURL: import.meta.env.VITE_API_BASE,
-  timeout: 1000,
+  timeout: 1000 * 60,
   headers: { 'Content-Type': 'application/json' },
 });

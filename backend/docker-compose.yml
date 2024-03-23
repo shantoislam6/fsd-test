@@ -33,7 +33,6 @@ services:
   cache:
     container_name: cache
     image: redis
-    command: /bin/sh -c "redis-server --requirepass password"
     environment:
       - REDIS_URI=redis://default:password@cache:6379
     volumes:

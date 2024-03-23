@@ -52,7 +52,7 @@ export const getUser = async (req: Request, res: Response) => {
         user: null,
       });
     }
-  } catch (err) {
+  } catch (err: any) {
     return res.status(500).json({
       success: false,
       errorType: 'serverError',
@@ -113,6 +113,7 @@ export const seedUsers = async (req: Request, res: Response) => {
       message: 'Users seed has been created',
     });
   } catch (err) {
+    res.status(400).json(err);
     console.log(err);
   }
 };

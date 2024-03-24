@@ -11,8 +11,8 @@ export const parsePaginationParams = ({
   MAX_LIMIT = 20,
   totalCollections,
 }: TparsePaginationParamsOptions) => {
-  const page = req.query?.page ? parseInt(req.query?.page as string) ?? DEFAULT_PAGE : DEFAULT_PAGE;
-  const limit = req.query?.limit ? parseInt(req.query?.limit as string) ?? MAX_LIMIT : MAX_LIMIT;
+  const page = req.query?.page ? parseInt(req.query?.page as string) || DEFAULT_PAGE : DEFAULT_PAGE;
+  const limit = req.query?.limit ? parseInt(req.query?.limit as string) || MAX_LIMIT : MAX_LIMIT;
 
   const collectionLimit = Math.min(limit, MAX_LIMIT);
   const skip = (page - 1) * collectionLimit;
